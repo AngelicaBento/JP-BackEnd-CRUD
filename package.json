@@ -1,0 +1,32 @@
+{
+  "name": "jp-backend-crud",
+  "version": "1.0.0",
+  "description": "Repositório destinado para CRUD",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "jest test/index.test.js",
+    "test": "jest test/index.test.js",
+    "test:cov": "jest test/index.test.js --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngelicaBento/JP-BackEnd-CRUD.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AngelicaBento/JP-BackEnd-CRUD/issues"
+  },
+  "homepage": "https://github.com/AngelicaBento/JP-BackEnd-CRUD#readme",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1"
+  }
+}
