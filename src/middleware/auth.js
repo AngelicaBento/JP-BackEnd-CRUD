@@ -6,14 +6,14 @@ function authMiddleware(req, res, next) {
     const token = req.headers['authorization'];
 
     if (!token) {
-      return res.status(401).json({ mensagem: 'Token não fornecido' });
+      return res.status(401).json({ mensagem: 'Autorização Negada' });
     }
   
     jwt.verify(token, config.secret, (err, decoded) => {
       if (err) {
-        return res.status(401).json({ mensagem: 'Token inválido' });
+        return res.status(401).json({ mensagem: 'Autorização NEGADA' });
       }
-
+      console.log(decoded)
       req.session = decoded
   
       next()

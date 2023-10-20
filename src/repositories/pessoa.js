@@ -1,10 +1,10 @@
 const Pessoa = require('../models/pessoa.js')
-const bcrypt = require('bcrypt.js')
+const bcrypt = require('bcrypt')
 
 
 class RepositoriePessoa {
 
-    async PegarUm(id) {
+    async PegarUm(id, transaction) {
         return Pessoa.findOne({
             where: { id }
         });
@@ -20,12 +20,13 @@ class RepositoriePessoa {
         return Pessoa.findAll();
     }
 
-    async Add(pessoa) {
-        const hashSenha = bcrypt.hash(pessoa.senha, 10) 
-        const { senha, email } = pessoa
+    async Add(pessoa, transaction) {
+        const hashSenha = await bcrypt.hash(pessoa.senha, 10)
+
+        pessoa.senha = hashSenha
         const result = await Pessoa.create(
-            { pessoa, senha: hashSenha },
-            { transaction }
+            pessoa,
+            { transaction}
         )
 
         return result
